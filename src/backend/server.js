@@ -1,5 +1,5 @@
-const bodyParser = require('body-parser');
 const express = require('express');
+const bodyParser = require('body-parser');
 const Library = require('./db').Library;
 const app = express();
 const fs = require('fs');
@@ -10,14 +10,15 @@ app.listen(process.env.PORT || 3000);
 /* parse incoming request */
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(bodyParser.urlencoded({ extended: true }));
 
 /* List of Routes */
 
 app.get('/api/saveBooks', saveBooks);
 app.get('/api/getBooks', getBooks);
-app.get('/api/getOneBook', getOneBook);
+app.get('/api/getFirstPageOfBook', getFirstPageOfBook);
+app.post('/api/togglePages', togglePages);
+
 /* Helper functions */
 
 function ltrim(str) {
@@ -80,13 +81,13 @@ function getBooks(req, res) {
   })
 }
 
-function getOneBook(req, res) {
+function getFirstPageOfBook(req, res) {
+  let bookPage = 0;
   Library.find({}, (err, data) => {
     if(err) {
       console.log(err);
     } else {
       let bookPath = data[0].path;
-      let bookDetails = [];
       let myArray = [];
 
       let rl = require('readline').createInterface({
@@ -98,7 +99,6 @@ function getOneBook(req, res) {
       });
 
       rl.on('close', () => {
-        let totalLength = myArray.length;
         let intoBookPages = [];
         let begin = 0;
         let end = 51;
@@ -108,9 +108,43 @@ function getOneBook(req, res) {
           begin = end + 1;
           end = end + 51;
         }
-        res.status(200).send(JSON.stringify(intoBookPages.filter(n => n.length !== 0)));
+        res.status(200).send(JSON.stringify(intoBookPages.filter(n => n.length !== 0)[bookPage]));
       })
 
     }
   })
 }
+
+function togglePages(req, res) {
+  let bookPage = req.body[0];
+  console.log('this is the book page number', bookPage);
+  Library.find({}, (err, data) => {
+    if(err) {
+      console.log(err);
+    } else {
+      let bookPath = data[0].path;
+      let myArray = [];
+
+      let rl = require('readline').createInterface({
+        input: require('fs').createReadStream(bookPath)
+      });
+
+      rl.on('line', (line) => {
+        myArray.push(line);
+      });
+
+      rl.on('close', () => {
+        let intoBookPages = [];
+        let begin = 0;
+        let end = 51;
+
+        for(let i = 0; i < myArray.length; i++) {
+          intoBookPages.push(myArray.slice(begin, end));
+          begin = end + 1;
+          end = end + 51;
+        }
+        res.status(200).send(JSON.stringify(intoBookPages.filter(n => n.length !== 0)[bookPage]));
+      })
+    }
+  })
+};

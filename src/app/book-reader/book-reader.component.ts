@@ -8,10 +8,38 @@ import {ServerService} from "../../server.service";
 })
 export class BookReaderComponent implements OnInit {
   public bookContent;
+  public pageCount = 0;
+
   constructor(private serverService: ServerService) { }
 
   ngOnInit() {
-    this.serverService.getOneBook()
+    this.serverService.getFirstPageOfBook()
+      .subscribe(
+        (response) => {
+          this.bookContent = JSON.parse(response.text());
+        },
+        (error) => {
+          console.log(error);
+        }
+      )
+  }
+
+  recieveNextPage(index: Number) {
+    this.pageCount++;
+    this.serverService.togglePages(this.pageCount)
+      .subscribe(
+        response => {
+          this.bookContent = JSON.parse(response.text());
+        },
+        (error) => {
+          console.log(error);
+        }
+      )
+  }
+
+  recievePreviousPage(index: Number) {
+    this.pageCount--;
+    this.serverService.togglePages(this.pageCount)
       .subscribe(
         (response) => {
           this.bookContent = JSON.parse(response.text());
