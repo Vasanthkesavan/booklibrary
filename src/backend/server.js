@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/api/saveBooks', saveBooks);
 app.get('/api/getBooks', getBooks);
-
+app.get('/api/getOneBook', getOneBook);
 /* Helper functions */
 
 function ltrim(str) {
@@ -76,6 +76,41 @@ function getBooks(req, res) {
       console.log(err);
     } else {
       res.send(data);
+    }
+  })
+}
+
+function getOneBook(req, res) {
+  Library.find({}, (err, data) => {
+    if(err) {
+      console.log(err);
+    } else {
+      let bookPath = data[0].path;
+      let bookDetails = [];
+      let myArray = [];
+
+      let rl = require('readline').createInterface({
+        input: require('fs').createReadStream(bookPath)
+      });
+
+      rl.on('line', (line) => {
+        myArray.push(line);
+      });
+
+      rl.on('close', () => {
+        let totalLength = myArray.length;
+        let intoBookPages = [];
+        let begin = 0;
+        let end = 51;
+
+        for(let i = 0; i < myArray.length; i++) {
+          intoBookPages.push(myArray.slice(begin, end));
+          begin = end + 1;
+          end = end + 51;
+        }
+        res.status(200).send(JSON.stringify(intoBookPages.filter(n => n.length !== 0)));
+      })
+
     }
   })
 }

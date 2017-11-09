@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ServerService} from "../../server.service";
 
 @Component({
   selector: 'app-book-reader',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./book-reader.component.css']
 })
 export class BookReaderComponent implements OnInit {
-
-  constructor() { }
+  public bookContent;
+  constructor(private serverService: ServerService) { }
 
   ngOnInit() {
+    this.serverService.getOneBook()
+      .subscribe(
+        (response) => {
+          this.bookContent = JSON.parse(response.text());
+        },
+        (error) => {
+          console.log(error);
+        }
+      )
   }
 
 }

@@ -12,4 +12,8 @@ export class ServerService {
   getBooks() {
     return this.http.get('/api/getBooks');
   }
+
+  getOneBook() {
+    return this.http.get('/api/getOneBook');
+  }
 }
