@@ -9,6 +9,7 @@ import {ServerService} from "../../server.service";
 export class BookReaderComponent implements OnInit {
   public bookContent;
   public pageCount = 0;
+  public totalPages;
 
   constructor(private serverService: ServerService) { }
 
@@ -16,7 +17,8 @@ export class BookReaderComponent implements OnInit {
     this.serverService.getFirstPageOfBook()
       .subscribe(
         (response) => {
-          this.bookContent = JSON.parse(response.text());
+          this.totalPages = JSON.parse(response.text()).length;
+          this.bookContent = JSON.parse(response.text())[0];
         },
         (error) => {
           console.log(error);

@@ -21,11 +21,6 @@ app.post('/api/togglePages', togglePages);
 
 /* Helper functions */
 
-function ltrim(str) {
-  if(str === null) return null;
-  return str.replace(/^\s+/g, '');
-}
-
 function saveToDatabase(obj) {
   let book = new Library(obj);
   book.save((err) => console.log(err));
@@ -82,7 +77,6 @@ function getBooks(req, res) {
 }
 
 function getFirstPageOfBook(req, res) {
-  let bookPage = 0;
   Library.find({}, (err, data) => {
     if(err) {
       console.log(err);
@@ -108,7 +102,7 @@ function getFirstPageOfBook(req, res) {
           begin = end + 1;
           end = end + 51;
         }
-        res.status(200).send(JSON.stringify(intoBookPages.filter(n => n.length !== 0)[bookPage]));
+        res.status(200).send(JSON.stringify(intoBookPages.filter(n => n.length !== 0)));
       })
 
     }
@@ -118,33 +112,35 @@ function getFirstPageOfBook(req, res) {
 function togglePages(req, res) {
   let bookPage = req.body[0];
   console.log('this is the book page number', bookPage);
-  Library.find({}, (err, data) => {
-    if(err) {
-      console.log(err);
-    } else {
-      let bookPath = data[0].path;
-      let myArray = [];
+  if(bookPage >= 0) {
+    Library.find({}, (err, data) => {
+      if(err) {
+        console.log(err);
+      } else {
+        let bookPath = data[0].path;
+        let myArray = [];
 
-      let rl = require('readline').createInterface({
-        input: require('fs').createReadStream(bookPath)
-      });
+        let rl = require('readline').createInterface({
+          input: require('fs').createReadStream(bookPath)
+        });
 
-      rl.on('line', (line) => {
-        myArray.push(line);
-      });
+        rl.on('line', (line) => {
+          myArray.push(line);
+        });
 
-      rl.on('close', () => {
-        let intoBookPages = [];
-        let begin = 0;
-        let end = 51;
+        rl.on('close', () => {
+          let intoBookPages = [];
+          let begin = 0;
+          let end = 51;
 
-        for(let i = 0; i < myArray.length; i++) {
-          intoBookPages.push(myArray.slice(begin, end));
-          begin = end + 1;
-          end = end + 51;
-        }
-        res.status(200).send(JSON.stringify(intoBookPages.filter(n => n.length !== 0)[bookPage]));
-      })
-    }
-  })
-};
+          for(let i = 0; i < myArray.length; i++) {
+            intoBookPages.push(myArray.slice(begin, end));
+            begin = end + 1;
+            end = end + 51;
+          }
+          res.status(200).send(JSON.stringify(intoBookPages.filter(n => n.length !== 0)[bookPage]));
+        })
+      }
+    })
+  }
+}
