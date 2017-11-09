@@ -12,9 +12,9 @@ mongoose.connection.once('open', function() {
 /* Library Schema */
 
 const LibrarySchema = new Schema({
-  title: String,
+  title: { type: String, unique: true },
   author: String,
-  book: String
+  path: { type: String, unique: true }
 });
 
 /* Model for Schema */

@@ -8,4 +8,8 @@ export class ServerService {
   saveBooks() {
     return this.http.get('/api/saveBooks');
   }
+
+  getBooks() {
+    return this.http.get('/api/getBooks');
+  }
 }
