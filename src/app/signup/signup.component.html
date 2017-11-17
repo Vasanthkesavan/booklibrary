@@ -1,21 +1,19 @@
+<app-signin [hidden]="!showHide"></app-signin>
 
-<div>
-  <mat-toolbar color="primary">
-    <div class="center">
-      Sign Up
-    </div>
-  </mat-toolbar>
-  <br>
-  <div class="container">
+  <form formGroup class="example-form" [hidden]="showHide">
+    <mat-toolbar color="primary">
+      <div class="center">
+        Sign Up
+      </div>
+    </mat-toolbar>
     <mat-form-field>
       <input matInput #input maxlength="10" placeholder="First Name">
     </mat-form-field>
+
     <mat-form-field>
       <input matInput #input maxlength="10" placeholder="Last Name">
     </mat-form-field>
-  </div>
 
-  <form formGroup class="example-form">
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Email" [formControl]="emailFormControl"
              [errorStateMatcher]="matcher">
@@ -31,14 +29,15 @@
       <input matInput name="password" type="password" ng-model="loginInfo.password" required placeholder="Password"/>
     </mat-form-field>
   </form>
+
   <br>
-  <div class="center">
-    <button mat-raised-button color="primary">Submit</button>
-    <a mat-button (click)="changeShowStatus()">Have an account? Sign In</a>
-  </div>
+
+<div class="center">
+  <button mat-raised-button color="primary">Submit</button>
+  <a mat-button (click)="changeShowStatus()">Have an account? Sign In</a>
 </div>
 
-<app-signin *ngIf="showHide"></app-signin>
+
 
 
 

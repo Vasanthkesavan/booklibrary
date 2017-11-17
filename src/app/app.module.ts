@@ -11,12 +11,14 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material';
 import {MatCardModule} from '@angular/material';
 import { SigninComponent } from './signin/signin.component';
+import { BookscontainerComponent } from './bookscontainer/bookscontainer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     SigninComponent,
+    BookscontainerComponent,
   ],
   imports: [
     BrowserModule,
