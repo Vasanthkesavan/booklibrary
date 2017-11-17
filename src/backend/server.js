@@ -3,21 +3,25 @@ const bodyParser = require('body-parser');
 const Library = require('./db').Library;
 const app = express();
 const fs = require('fs');
+const path = require('path');
 
 app.listen(process.env.PORT || 3000);
-// app.use(express.static(path.join(__dirname, 'dist')));
 
 /* parse incoming request */
-
+//app.disable('etag');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+//app.use(express.static(path.resolve(__dirname, '../../dist')));
+// app.get('*', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, '../../dist/index.html'));
+// });
 
 /* List of Routes */
 
 app.get('/api/saveBooks', saveBooks);
 app.get('/api/getBooks', getBooks);
-app.get('/api/getFirstPageOfBook', getFirstPageOfBook);
-app.post('/api/togglePages', togglePages);
+
 
 /* Helper functions */
 
@@ -76,71 +80,3 @@ function getBooks(req, res) {
   })
 }
 
-function getFirstPageOfBook(req, res) {
-  Library.find({}, (err, data) => {
-    if(err) {
-      console.log(err);
-    } else {
-      let bookPath = data[0].path;
-      let myArray = [];
-
-      let rl = require('readline').createInterface({
-        input: require('fs').createReadStream(bookPath)
-      });
-
-      rl.on('line', (line) => {
-        myArray.push(line);
-      });
-
-      rl.on('close', () => {
-        let intoBookPages = [];
-        let begin = 0;
-        let end = 51;
-
-        for(let i = 0; i < myArray.length; i++) {
-          intoBookPages.push(myArray.slice(begin, end));
-          begin = end + 1;
-          end = end + 51;
-        }
-        res.status(200).send(JSON.stringify(intoBookPages.filter(n => n.length !== 0)));
-      })
-
-    }
-  })
-}
-
-function togglePages(req, res) {
-  let bookPage = req.body[0];
-  console.log('this is the book page number', bookPage);
-  if(bookPage >= 0) {
-    Library.find({}, (err, data) => {
-      if(err) {
-        console.log(err);
-      } else {
-        let bookPath = data[0].path;
-        let myArray = [];
-
-        let rl = require('readline').createInterface({
-          input: require('fs').createReadStream(bookPath)
-        });
-
-        rl.on('line', (line) => {
-          myArray.push(line);
-        });
-
-        rl.on('close', () => {
-          let intoBookPages = [];
-          let begin = 0;
-          let end = 51;
-
-          for(let i = 0; i < myArray.length; i++) {
-            intoBookPages.push(myArray.slice(begin, end));
-            begin = end + 1;
-            end = end + 51;
-          }
-          res.status(200).send(JSON.stringify(intoBookPages.filter(n => n.length !== 0)[bookPage]));
-        })
-      }
-    })
-  }
-}

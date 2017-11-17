@@ -1,14 +1,18 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
+const dbUri = require('./dbInfo').dbUri;
+const Schema = mongoose.Schema;
 /* Connecting to the database */
 
-mongoose.connect('mongodb://localhost/booklibrary', { useMongoClient: true });
+mongoose.connect('mongodb://' + dbUri);
 
 mongoose.connection.once('open', function() {
-  console.log('connected to database successfully');
+  console.log('database is connected');
 });
 
+mongoose.connection.on('error', function(error) {
+  console.log('database connection error: ' + error);
+});
 /* Library Schema */
 
 const LibrarySchema = new Schema({

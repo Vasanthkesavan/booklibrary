@@ -13,12 +13,12 @@ export class ServerService {
     return this.http.get('/api/getBooks');
   }
 
-  getFirstPageOfBook() {
-    return this.http.get('/api/getFirstPageOfBook');
+  getFirstPageOfBook(title: String) {
+    return this.http.post('/api/getFirstPageOfBook', [title]);
   }
 
-  togglePages(index: Number) {
-    return this.http.post('/api/togglePages', [index]);
+  togglePages(index: Number, title: String) {
+    return this.http.post('/api/togglePages', [index, title]);
   }
 
 }
