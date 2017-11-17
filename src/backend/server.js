@@ -44,11 +44,16 @@ function parseBook(pathStr) {
   });
 
   rl.on('close', function () {
-    titleAuthor = myArray.shift();
-    bookDetails.push({title: titleAuthor.split(',')[0], author: titleAuthor.split(',')[1], path: pathStr});
+    titleAuthor = myArray.shift().split(',');
+
+    if(titleAuthor[0]) {
+      if(titleAuthor[1] === undefined) {
+        titleAuthor[1] = 'by Homer'
+      }
+      bookDetails.push({title: titleAuthor[0], author: titleAuthor[1], path: pathStr});
+    }
     saveToDatabase(bookDetails[0]);
   });
-
 }
 
 
