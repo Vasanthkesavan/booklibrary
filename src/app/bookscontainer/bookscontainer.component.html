@@ -4,7 +4,7 @@
     <div *ngFor="let book of booksData">
         <mat-card class="cb" ng-click="tab = 1" ng-class="{'cb-active': tab == 1}">
           <mat-card-header>
-            <mat-card-title>
+            <mat-card-title (click)="bookInfo($event.target.innerHTML)">
               {{book[0]}}
             </mat-card-title>
             <mat-card-subtitle>
@@ -15,6 +15,6 @@
     </div>
   </div>
   <div class="two">
-
+    {{bookDetail}}
   </div>
 </div>

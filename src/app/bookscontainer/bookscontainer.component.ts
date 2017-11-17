@@ -8,6 +8,7 @@ import {ServerService} from "../../server.service";
 })
 export class BookscontainerComponent implements OnInit {
   public booksData = [];
+  public bookDetail: String;
 
   constructor(private serverService: ServerService) { }
 
@@ -56,5 +57,9 @@ export class BookscontainerComponent implements OnInit {
     } else {
       return removeProj(title);
     }
+  }
+
+  bookInfo(data: String) {
+    this.bookDetail = data;
   }
 }
