@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class ServerService {
-  constructor(private http: Http) {}
+  constructor(private http: HttpClient) {}
 
   saveBooks() {
-    return this.http.get('/api/saveBooks');
+    return this.http.get('/api/saveBooks', {responseType: 'text'});
   }
 
   getBooks() {

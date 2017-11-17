@@ -15,7 +15,8 @@ export class AppComponent implements OnInit{
     this.serverService.saveBooks()
       .subscribe(
         (response) => {
-            this.title = 'The Library';
+          console.log('this is the title', this.title)
+            this.title = 'Book Library';
         },
         (error) => console.log(error)
       )

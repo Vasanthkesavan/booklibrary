@@ -66,7 +66,7 @@ function saveBooks(req, res) {
     for(let i = 0; i < pathArray.length; i++) {
       parseBook(pathArray[i]);
     }
-    res.send('saved successfully');
+    res.status(200).send('saved successfully');
   });
 }
 
