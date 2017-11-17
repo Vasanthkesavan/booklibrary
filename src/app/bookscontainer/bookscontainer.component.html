@@ -1,17 +1,17 @@
 <div class="wrapper">
-  <div class="one">
-    <mat-card-title class="h"> Libray Screen </mat-card-title>
+  <div class="one" class="margin">
+    <mat-card-title class="h"> Pick A Book To Read </mat-card-title>
     <div *ngFor="let book of booksData">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>
-            {{book[0]}}
-          </mat-card-title>
-          <mat-card-subtitle>
-            {{book[1]}}
-          </mat-card-subtitle>
-        </mat-card-header>
-      </mat-card>
+        <mat-card class="cb" ng-click="tab = 1" ng-class="{'cb-active': tab == 1}">
+          <mat-card-header>
+            <mat-card-title>
+              {{book[0]}}
+            </mat-card-title>
+            <mat-card-subtitle>
+              {{book[1]}}
+            </mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
     </div>
   </div>
   <div class="two">

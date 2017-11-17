@@ -15,3 +15,18 @@
   grid-column: 2/4;
   grid-row: 1;
 }
+
+.cb {
+  background-color: white;
+  color: black;
+}
+
+
+.cb:hover{
+  background-color: #4a4a4a;
+  color: #FFF;
+}
+
+.margin {
+  margin-right: 120px;
+}
