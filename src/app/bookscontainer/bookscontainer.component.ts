@@ -8,7 +8,7 @@ import {ServerService} from "../../server.service";
 })
 export class BookscontainerComponent implements OnInit {
   public booksData = [];
-  public bookDetail: String;
+  public bookDetail: Array<String>;
 
   constructor(private serverService: ServerService) { }
 
@@ -43,12 +43,9 @@ export class BookscontainerComponent implements OnInit {
     };
 
     if(new String(title.split(' ')[title.split(' ').length - 1]).valueOf() === new String('Homer').valueOf()) {
-      console.log('lol')
       let str = title.split(' ');
       str.splice(-2, 2);
-      title = str.join(' ')
-      console.log(title)
-
+      title = str.join(' ');
     }
 
     let arr = title.split(' ');
@@ -60,6 +57,18 @@ export class BookscontainerComponent implements OnInit {
   }
 
   bookInfo(data: String) {
-    this.bookDetail = data;
+    let details = [];
+    details.push(`Project Gutenberg’s ${data}`);
+    details.push(`The Project Gutenberg EBook of ${data}`);
+
+    this.serverService.getBookContents(details)
+      .subscribe(
+        (response) => {
+          console.log(response)
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
   }
 }

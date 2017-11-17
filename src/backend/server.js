@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api/saveBooks', saveBooks);
 app.get('/api/getBooks', getBooks);
-
+app.post('/api/getBookContents', getBookContents);
 
 /* Helper functions */
 
@@ -85,3 +85,42 @@ function getBooks(req, res) {
   })
 }
 
+function cleanString(input) {
+  var output = "";
+  for (var i=0; i<input.length; i++) {
+    if (input.charCodeAt(i) <= 127) {
+      output += input.charAt(i);
+    }
+  }
+  return output;
+}
+
+function getBookContents(req, res) {
+  let bookTitle1 = cleanString(req.body[0].replace("\r", "").replace("\n", "").split(' ').join(' ').split(' ').join('')).trim();
+  let bookTitle2 = cleanString(req.body[1].replace("\r", "").replace("\n", "").split(' ').join(' ').split(' ').join('')).trim();
+
+
+  Library.find({}, (err, data) => {
+    if(err) {
+      console.log(err);
+    } else {
+      let path = [];
+      let str1 = '';
+      let str2 = '';
+
+      for(let i = 0; i < data.length; i++) {
+        // console.log(`This is the database ${cleanString(data[i]['title'].split(' ').join('').split(' ')[0])} and this is the parsed ${bookTitle1} and this is the result`,cleanString(data[i]['title'].split(' ').join('').split(' ')[0]) === bookTitle1);
+        //
+        // console.log(`This is the database ${cleanString(data[i]['title'].split(' ').join('').split(' ')[0])} and this is the parsed ${bookTitle2} and this is the result`,cleanString(data[i]['title'].split(' ').join('').split(' ')[0]) === bookTitle2);
+
+        if(cleanString(data[i]['title'].split(' ').join('').split(' ')[0]) === bookTitle1) {
+          path.push(data[i]['path']);
+        }
+        if(cleanString(data[i]['title'].split(' ').join('').split(' ')[0]) === bookTitle2) {
+          path.push(data[i]['path']);
+        }
+      }
+      res.send(JSON.stringify(path))
+    }
+  })
+}

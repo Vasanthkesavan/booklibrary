@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "server": "node ./src/backend/server.js"
+    "server": "nodemon ./src/backend/server.js"
   },
   "private": true,
   "dependencies": {

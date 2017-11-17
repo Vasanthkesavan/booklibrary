@@ -13,12 +13,9 @@ export class ServerService {
     return this.http.get('/api/getBooks');
   }
 
-  getFirstPageOfBook(title: String) {
-    return this.http.post('/api/getFirstPageOfBook', [title]);
+  getBookContents(titles: Array<String>) {
+    return this.http.post('/api/getBookContents', titles);
   }
 
-  togglePages(index: Number, title: String) {
-    return this.http.post('/api/togglePages', [index, title]);
-  }
 
 }
