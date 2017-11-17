@@ -16,6 +16,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class SignupComponent implements OnInit {
   public showHide: Boolean;
+  public showHideEntire: Boolean;
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -23,12 +24,16 @@ export class SignupComponent implements OnInit {
   ]);
 
   matcher = new MyErrorStateMatcher();
-  constructor() { this.showHide = false; }
+  constructor() { this.showHide = false; this.showHideEntire = false;}
 
   ngOnInit() {
   }
 
   changeShowStatus() {
     this.showHide = !this.showHide;
+  }
+
+  onSubmit() {
+    this.showHideEntire = !this.showHideEntire;
   }
 }

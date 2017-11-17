@@ -12,6 +12,12 @@ import {MatButtonModule} from '@angular/material';
 import {MatCardModule} from '@angular/material';
 import { SigninComponent } from './signin/signin.component';
 import { BookscontainerComponent } from './bookscontainer/bookscontainer.component';
+import {Routes, RouterModule} from "@angular/router";
+
+
+const appRoutes: Routes = [
+  { path: 'bookscontainer', component: BookscontainerComponent }
+];
 
 @NgModule({
   declarations: [
@@ -30,7 +36,8 @@ import { BookscontainerComponent } from './bookscontainer/bookscontainer.compone
     MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [ServerService],
   bootstrap: [AppComponent]

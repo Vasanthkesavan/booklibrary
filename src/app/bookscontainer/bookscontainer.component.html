@@ -1,3 +1,9 @@
-<p>
-  bookscontainer works!
-</p>
+<div class="wrapper">
+  <div class="one">
+    <div *ngFor="let book of booksData">
+      <mat-card>
+        {{book}}
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 
@@ -16,6 +16,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class SigninComponent implements OnInit {
   public showHide: Boolean;
+
+  @Input() showHideEntire;
 
   emailFormControl = new FormControl('', [
     Validators.required,

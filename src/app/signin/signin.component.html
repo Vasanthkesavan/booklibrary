@@ -1,5 +1,4 @@
-
-<form formGroup class="example-form" [hidden]="showHide">
+<div class="example-form" [hidden]="showHide" [hidden]="showHideEntire">
   <mat-toolbar color="primary">
     <div class="center">
       Sign In
@@ -19,6 +18,8 @@
   <mat-form-field class="example-full-width">
     <input matInput name="password" type="password" ng-model="loginInfo.password" required placeholder="Password"/>
   </mat-form-field>
-</form>
+</div>
 
 <br>
+
+
