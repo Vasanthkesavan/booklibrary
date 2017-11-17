@@ -125,10 +125,13 @@ function forAlice(title) {
   return false;
 };
 
+
 function getBookContents(req, res) {
   let bookTitle1 = cleanString(req.body[0].replace("\r", "").replace("\n", "").split(' ').join(' ').split(' ').join('')).trim();
   let bookTitle2 = cleanString(req.body[1].replace("\r", "").replace("\n", "").split(' ').join(' ').split(' ').join('')).trim();
   let bookTitle3 = cleanString(req.body[2].replace("\r", "").replace("\n", "").split(' ').join(' ').split(' ').join('')).trim();
+
+  /* Getting the path from the database */
 
   Library.find({}, (err, data) => {
     if(err) {
@@ -163,7 +166,17 @@ function getBookContents(req, res) {
           path.push(data[i]['path']);
         }
       }
-      res.send(JSON.stringify(path))
+      //res.send(JSON.stringify(path[0]))
+
+      let bookArr = fs.readFileSync(path[0]).toString().split('\n');
+      let split = [];
+
+      for(let i = 0; i < bookArr.length; i++) {
+        split.push(bookArr.splice(0, 75));
+      }
+
+
+      res.send(JSON.stringify(split))
     }
   })
 }
