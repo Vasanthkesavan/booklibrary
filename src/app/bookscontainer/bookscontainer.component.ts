@@ -58,8 +58,11 @@ export class BookscontainerComponent implements OnInit {
 
   bookInfo(data: String) {
     let details = [];
+
     details.push(`Project Gutenberg’s ${data}`);
+    details.push(`Project Gutenberg's ${data}`);
     details.push(`The Project Gutenberg EBook of ${data}`);
+
 
     this.serverService.getBookContents(details)
       .subscribe(

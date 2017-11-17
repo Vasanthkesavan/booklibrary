@@ -95,28 +95,71 @@ function cleanString(input) {
   return output;
 }
 
+function forHomer(str) {
+  for(let j = 0; j < str.length; j++) {
+    if(str[j] === 'Homer') {
+      return true;
+    }
+  }
+  return false;
+}
+
+function aliceCheck(title) {
+  title = title.join('').split(' ');
+
+  for(let i = 0; i < title.length; i++) {
+    if(title[i] === 'Wonderland') {
+      return true;
+    }
+  }
+  return false;
+}
+function forAlice(title) {
+  if(aliceCheck(title)) {
+    for(let i = 0; i < title.length; i++) {
+      if(title[i] === '’') {
+        return true;
+      }
+    }
+  }
+  return false;
+};
+
 function getBookContents(req, res) {
   let bookTitle1 = cleanString(req.body[0].replace("\r", "").replace("\n", "").split(' ').join(' ').split(' ').join('')).trim();
   let bookTitle2 = cleanString(req.body[1].replace("\r", "").replace("\n", "").split(' ').join(' ').split(' ').join('')).trim();
-
+  let bookTitle3 = cleanString(req.body[2].replace("\r", "").replace("\n", "").split(' ').join(' ').split(' ').join('')).trim();
 
   Library.find({}, (err, data) => {
     if(err) {
       console.log(err);
     } else {
       let path = [];
-      let str1 = '';
-      let str2 = '';
 
       for(let i = 0; i < data.length; i++) {
-        // console.log(`This is the database ${cleanString(data[i]['title'].split(' ').join('').split(' ')[0])} and this is the parsed ${bookTitle1} and this is the result`,cleanString(data[i]['title'].split(' ').join('').split(' ')[0]) === bookTitle1);
-        //
-        // console.log(`This is the database ${cleanString(data[i]['title'].split(' ').join('').split(' ')[0])} and this is the parsed ${bookTitle2} and this is the result`,cleanString(data[i]['title'].split(' ').join('').split(' ')[0]) === bookTitle2);
-
+        if(forHomer(data[i]['title'].split(' '))) {
+          let str = data[i]['title'].split(' ');
+          str.splice(-2, 2);
+          str = str.join(' ');
+          data[i]['title'] = str;
+        }
+        if(forAlice(data[i]['title'].split(''))) {
+          let str = data[i]['title'].split('');
+          for(let i = 0; i < str.length; i++) {
+            if(str[i] === '’') {
+              str[i] = "'";
+            }
+          }
+          data[i]['title'] = str.join('');
+        }
         if(cleanString(data[i]['title'].split(' ').join('').split(' ')[0]) === bookTitle1) {
+          console.log('YES')
           path.push(data[i]['path']);
         }
         if(cleanString(data[i]['title'].split(' ').join('').split(' ')[0]) === bookTitle2) {
+          path.push(data[i]['path']);
+        }
+        if(cleanString(data[i]['title'].split(' ').join('').split(' ')[0]) === bookTitle3) {
           path.push(data[i]['path']);
         }
       }
