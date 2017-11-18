@@ -172,9 +172,8 @@ function getBookContents(req, res) {
       let split = [];
 
       for(let i = 0; i < bookArr.length; i++) {
-        split.push(bookArr.splice(0, 75));
+        split.push(bookArr.splice(0, 50));
       }
-
 
       res.send(JSON.stringify(split))
     }

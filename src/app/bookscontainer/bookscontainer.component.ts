@@ -9,6 +9,9 @@ import {ServerService} from "../../server.service";
 export class BookscontainerComponent implements OnInit {
   public booksData = [];
   public bookDetail: Array<String>;
+  public bookContent;
+  public currentPage;
+  public count;
 
   constructor(private serverService: ServerService) { }
 
@@ -56,6 +59,16 @@ export class BookscontainerComponent implements OnInit {
     }
   }
 
+  nextPage() {
+    this.count++;
+    this.currentPage = this.bookContent[this.count];
+  }
+
+  prevPage() {
+    this.count--;
+    this.currentPage = this.bookContent[this.count];
+  }
+
   bookInfo(data: String) {
     let details = [];
 
@@ -67,7 +80,9 @@ export class BookscontainerComponent implements OnInit {
     this.serverService.getBookContents(details)
       .subscribe(
         (response) => {
-          console.log(response)
+          this.bookContent = response;
+          this.currentPage = response[0];
+          this.count = 1;
         },
         (error) => {
           console.log(error)
