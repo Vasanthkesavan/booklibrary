@@ -29,3 +29,60 @@
   margin-top: 10px;
 }
 
+.landing {
+  background: deepskyblue;
+  color: white;
+  padding: 80px 0px 96px 0;
+  position: relative;
+  z-index: 29;
+}
+
+.lander-wrapping{
+  margin: 0 auto;
+  max-width: 1680px;
+  padding: 0 80px;
+  font-family: "Apple Chancery";
+}
+
+.heading {
+  font-size: 64px;
+  margin-bottom: 24px;
+  max-width: 800px;
+}
+
+.catalog{
+  background: white;
+  color: deepskyblue;
+  font-size: 16px;
+  height: 56px;
+  line-height: 56px;
+  margin: 48px 0px 0px 24px;
+  padding: 0 32px;
+}
+
+.header{
+  background: deepskyblue;
+  color: white;
+}
+
+.normal-button{
+  background: white;
+  color: deepskyblue;
+}
+
+.sidenav-container {
+  width: 500px;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidenav {
+  padding: 20px;
+}

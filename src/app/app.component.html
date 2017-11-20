@@ -1,5 +1,7 @@
-<mat-toolbar  color="primary">
-  <mat-icon>reorder</mat-icon>
+<mat-toolbar class="header">
+
+      <mat-icon>reorder</mat-icon>
+
   <div>
     <h1 class="title">{{title}}</h1>
   </div>
@@ -10,16 +12,32 @@
       <mat-form-field>
         <input matInput placeholder="Search for books" value="" class="">
       </mat-form-field>
-      <button mat-raised-button color="primary">Search</button>
+      <button mat-raised-button class="normal-button">Search</button>
   </span>
 
   <span>
-    <button mat-raised-button color="primary">Sign Up</button>
-    <button mat-raised-button color="primary">Sign In</button>
+    <button mat-raised-button class="normal-button">Sign Up</button>
+    <button mat-raised-button class="normal-button">Sign In</button>
   </span>
 </mat-toolbar>
 
+<section class="landing">
+  <div class="lander-wrapping">
+    <h1 class="heading">
+      SELECT A BOOK, START READING
+    </h1>
+    <h2>
+      Select a book of your choice, start reading. All books
+      are open sourced.
+    </h2>
+    <button mat-raised-button class="catalog">Browse the catalog</button>
+  </div>
+</section>
 
+<section>
 
+</section>
+
+<router-outlet></router-outlet>
 
 
