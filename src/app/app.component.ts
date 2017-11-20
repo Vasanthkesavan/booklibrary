@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ServerService} from "../server.service";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -21,4 +22,5 @@ export class AppComponent implements OnInit{
         (error) => console.log(error)
       )
   }
+
 }

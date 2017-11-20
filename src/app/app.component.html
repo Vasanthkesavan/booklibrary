@@ -1,11 +1,23 @@
-<mat-toolbar color="primary">
-  <span>{{title}}</span>
+<mat-toolbar  color="primary">
+  <mat-icon>reorder</mat-icon>
+  <div>
+    <h1 class="title">{{title}}</h1>
+  </div>
+
+  <mat-icon class="icon-width">search</mat-icon>
+
+  <span class="full-width">
+      <mat-form-field>
+        <input matInput placeholder="Search for books" value="" class="">
+      </mat-form-field>
+      <button mat-raised-button color="primary">Search</button>
+  </span>
+
+  <span>
+    <button mat-raised-button color="primary">Sign Up</button>
+    <button mat-raised-button color="primary">Sign In</button>
+  </span>
 </mat-toolbar>
-
-
-  <app-signup></app-signup>
-  <router-outlet></router-outlet>
-
 
 
 
