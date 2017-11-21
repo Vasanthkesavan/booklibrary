@@ -23,11 +23,11 @@
 <section class="landing">
   <div class="lander-wrapping">
     <h1 class="heading">
-      SELECT A BOOK, START READING
+      Choose from the existing book catalog, start reading
     </h1>
     <h2>
-      Select a book of your choice, start reading. All books
-      are open sourced.
+      We provide books from project gutenberg's which publishes books with
+      open source license.
     </h2>
     <button mat-raised-button class="catalog">Browse the catalog</button>
   </div>
@@ -35,26 +35,29 @@
 
 <mat-grid-list cols="2" rowHeight="2:1" class="border-grid">
   <mat-grid-tile class="tile1">
-    1
+    <app-info-one></app-info-one>
   </mat-grid-tile>
   <mat-grid-tile class="tile2">
-    2
+    <app-info-two></app-info-two>
   </mat-grid-tile>
 </mat-grid-list>
 
 <mat-grid-list cols="1" rowHeight="3:1">
   <mat-grid-tile class="tile3">
     <h2>
-      End of the side
+      Want to contribute to the devlopment?
+      For the repo in github
     </h2>
+    <mat-icon class="icon-spacing">code</mat-icon>
   </mat-grid-tile>
 </mat-grid-list>
 
-<mat-grid-list cols="1" rowHeight="9:1">
+<mat-grid-list cols="1" rowHeight="15:1">
   <mat-grid-tile class="tile4">
-
+    <app-footer></app-footer>
   </mat-grid-tile>
 </mat-grid-list>
+
 <router-outlet></router-outlet>
 
 

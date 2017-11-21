@@ -45,7 +45,7 @@
 }
 
 .heading {
-  font-size: 64px;
+  font-size: 54px;
   margin-bottom: 24px;
   max-width: 800px;
 }
@@ -92,21 +92,24 @@
 }
 
 .tile1{
-  background: orange;
+  background: goldenrod;
   margin-left: 50px;
 }
 
 .tile2 {
-  background: blueviolet;
+  background: mediumslateblue;
   position: absolute;
 }
 
 .tile3 {
-  background: ;
+  background: lightblue;
   margin-right: 100px;
 }
 
 .tile4 {
-  background: antiquewhite;
+  background: white;
 }
 
+.icon-spacing {
+  padding-left: 10px;
+}

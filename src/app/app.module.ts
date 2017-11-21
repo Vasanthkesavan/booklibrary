@@ -14,6 +14,9 @@ import { SigninComponent } from './signin/signin.component';
 import { BookscontainerComponent } from './bookscontainer/bookscontainer.component';
 import {Routes, RouterModule} from "@angular/router";
 import {MatSidenavModule} from '@angular/material';
+import { InfoOneComponent } from './info-one/info-one.component';
+import { InfoTwoComponent } from './info-two/info-two.component';
+import { FooterComponent } from './footer/footer.component';
 
 const appRoutes: Routes = [
   { path: 'bookscontainer', component: BookscontainerComponent }
@@ -25,6 +28,9 @@ const appRoutes: Routes = [
     SignupComponent,
     SigninComponent,
     BookscontainerComponent,
+    InfoOneComponent,
+    InfoTwoComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
