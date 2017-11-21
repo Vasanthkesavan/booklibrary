@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ServerService} from "../server.service";
-import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +8,9 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class AppComponent implements OnInit{
   title = 'app';
+  public showHide: Boolean;
 
-  constructor(private serverService: ServerService) {}
+  constructor(private serverService: ServerService) { this.showHide = false; }
 
   ngOnInit() {
     this.serverService.saveBooks()
@@ -23,4 +23,7 @@ export class AppComponent implements OnInit{
       )
   }
 
+  onBrowse() {
+    this.showHide = !this.showHide;
+  }
 }

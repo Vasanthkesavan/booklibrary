@@ -63,6 +63,7 @@
 .header{
   background: #4285F4;
   color: white;
+  position: relative;
 }
 
 .normal-button{
@@ -113,3 +114,4 @@
 .icon-spacing {
   padding-left: 10px;
 }
+
