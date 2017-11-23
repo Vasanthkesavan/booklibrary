@@ -25,6 +25,8 @@
   margin-top: 20px;
 }
 
-[hidden] {
-  display: none !important;
+.DivWithScroll{
+  height:600px;
+  overflow:scroll;
+  overflow-x:hidden;
 }
