@@ -15,35 +15,18 @@
   </mat-grid-tile>
 </mat-grid-list>
 
-<mat-grid-list cols="1" rowHeight="200px" *ngIf="count > 0">
-  <mat-grid-tile>
-    <mat-card>
-      <mat-card-content>
-        <h2 class="example-h2">Book Progress</h2>
-        <section class="example-section">
-          <mat-progress-bar
-            *ngIf="count > 0"
-            color="primary"
-            mode="determinate"
-            value="{{count}}"
-            bufferValue="{{bookContent.length}}">
-          </mat-progress-bar>
-        </section>
-        <div *ngIf="count > 0">
-          {{count}} / {{bookContent.length}}
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+<h2 style="text-align: center" *ngIf="count > 0">
+  Currently Reading: {{bookTitle}}
+</h2>
 
-<mat-grid-list cols="4" rowHeight="800px" *ngIf="count > 0" class="margin-content">
+<mat-grid-list cols="4" rowHeight="800px" *ngIf="count > 0" class="margin-content" (keydown.ArrowLeft)="onLeft($event)" (keydown.ArrowRight)="onRight($event)">
   <mat-grid-tile>
     <button mat-icon-button (click)="prevPage()">
-      <mat-icon>
+      <mat-icon class="icon-size">
         keyboard_arrow_left
       </mat-icon>
     </button>
+
   </mat-grid-tile>
 
   <mat-grid-tile colspan="2">
@@ -53,12 +36,37 @@
       </p>
     </div>
   </mat-grid-tile>
+
+  <mat-grid-list cols="1" rowHeight="80px" *ngIf="count > 0">
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-content>
+          <section class="example-section">
+            <mat-progress-bar
+              *ngIf="count > 0"
+              color="primary"
+              mode="determinate"
+              value="{{count}}"
+              bufferValue="{{bookContent.length}}">
+            </mat-progress-bar>
+          </section>
+          <div *ngIf="count > 0">
+            In Page: {{count}} / {{bookContent.length}}
+            |
+            Progress: {{ (count/bookContent.length*100)| number:0 }}%
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+
   <mat-grid-tile>
     <button mat-icon-button (click)="nextPage()">
-      <mat-icon>
+      <mat-icon class="icon-size">
         keyboard_arrow_right
       </mat-icon>
     </button>
+
   </mat-grid-tile>
 </mat-grid-list>
 

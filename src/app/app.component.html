@@ -1,5 +1,5 @@
 <mat-toolbar class="header">
-  <mat-icon>reorder</mat-icon>
+  <mat-icon>collections_bookmark</mat-icon>
 
   <div>
     <h1 class="title">{{title}}</h1>
@@ -9,10 +9,16 @@
 
   <span class="full-width">
       <mat-form-field>
-        <input matInput placeholder="Search for books" value="" class="">
+        <input matInput placeholder="Search for books" value="" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option>
+            Coming Soon...
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
-      <button mat-raised-button class="normal-button">Search</button>
+      <button mat-raised-button class="normal-button">Read</button>
   </span>
+
 
 </mat-toolbar>
 
@@ -39,15 +45,6 @@
     </mat-grid-tile>
   </mat-grid-list>
 
-  <mat-grid-list cols="1" rowHeight="3:1">
-    <mat-grid-tile class="tile3">
-      <h2>
-        Want to contribute to the devlopment?
-        For the repo in github
-      </h2>
-      <mat-icon class="icon-spacing">code</mat-icon>
-    </mat-grid-tile>
-  </mat-grid-list>
 
   <mat-grid-list cols="1" rowHeight="15:1">
     <mat-grid-tile class="tile4">

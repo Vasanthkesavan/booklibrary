@@ -8,10 +8,11 @@ import {ServerService} from "../../server.service";
 })
 export class BookscontainerComponent implements OnInit {
   public booksData = [];
-  public bookDetail: Array<String>;
   public bookContent;
   public currentPage;
   public count;
+  public bookTitle;
+  public progressPercentage;
 
   constructor(private serverService: ServerService) { }
 
@@ -27,6 +28,10 @@ export class BookscontainerComponent implements OnInit {
           console.log(error);
         }
       )
+  }
+
+  calculatePercentage() {
+    this.progressPercentage = Math.round(this.count / this.bookContent.length )
   }
 
   parseTitle(title: String) {
@@ -60,16 +65,34 @@ export class BookscontainerComponent implements OnInit {
   }
 
   nextPage() {
+
     this.count++;
     this.currentPage = this.bookContent[this.count];
+    this.calculatePercentage();
+  }
+
+  onRight() {
+
+    this.count++;
+    this.currentPage = this.bookContent[this.count];
+    this.calculatePercentage();
   }
 
   prevPage() {
+
     this.count--;
     this.currentPage = this.bookContent[this.count];
+    this.calculatePercentage();
+  }
+
+  onLeft() {
+    this.count--;
+    this.currentPage = this.bookContent[this.count];
+    this.calculatePercentage();
   }
 
   bookInfo(data: String) {
+    this.bookTitle = data;
     let details = [];
 
     details.push(`Project Gutenberg’s ${data}`);
@@ -83,6 +106,7 @@ export class BookscontainerComponent implements OnInit {
           this.bookContent = response;
           this.currentPage = response[0];
           this.count = 1;
+          this.calculatePercentage();
         },
         (error) => {
           console.log(error)

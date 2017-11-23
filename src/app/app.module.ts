@@ -4,7 +4,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import {ServerService} from '../server.service';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MatGridListModule, MatIconModule, MatInputModule, MatToolbarModule} from '@angular/material';
+import {
+  MatAutocompleteModule, MatGridListModule, MatIconModule, MatInputModule,
+  MatToolbarModule
+} from '@angular/material';
 import { SignupComponent } from './signup/signup.component';
 import {MatFormFieldModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -47,7 +50,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     MatSidenavModule,
     MatIconModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatAutocompleteModule
   ],
   providers: [ServerService],
   bootstrap: [AppComponent]
