@@ -1,4 +1,4 @@
-<mat-grid-list cols="1" rowHeight="200px" class="margin" *ngIf="!showHideBooks">
+<mat-grid-list cols="1" rowHeight="200px" class="margin">
   <mat-grid-tile class="tab1">
     <div *ngFor="let book of booksData">
       <mat-card class="cb" ng-click="tab = 1" ng-class="{'cb-active': tab == 1}">
@@ -15,7 +15,10 @@
   </mat-grid-tile>
 </mat-grid-list>
 <br>
-<mat-grid-list cols="5" rowHeight="800px" *ngIf="showHide">
+
+
+<mat-grid-list cols="4" rowHeight="800px" *ngIf="showHide">
+
   <mat-grid-tile>
     <button mat-icon-button (click)="prevPage()">
       <mat-icon>
@@ -24,7 +27,7 @@
     </button>
   </mat-grid-tile>
 
-  <mat-grid-tile colspan="3">
+  <mat-grid-tile colspan="2">
     <div class="DivWithScroll">
       <p *ngFor="let line of currentPage" class="content" style="overflow-y:scroll;">
         {{line}} <br>
