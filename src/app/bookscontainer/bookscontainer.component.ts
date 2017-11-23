@@ -12,10 +12,8 @@ export class BookscontainerComponent implements OnInit {
   public bookContent;
   public currentPage;
   public count;
-  public showHide: Boolean;
-  public showHideBooks: Boolean;
 
-  constructor(private serverService: ServerService) { this.showHide = true; this.showHideBooks = false; }
+  constructor(private serverService: ServerService) { }
 
   ngOnInit() {
     this.serverService.getBooks()
@@ -29,11 +27,6 @@ export class BookscontainerComponent implements OnInit {
           console.log(error);
         }
       )
-  }
-
-  changeShowStatus() {
-    this.showHide = !this.showHide;
-    this.showHideBooks = !this.showHideBooks;
   }
 
   parseTitle(title: String) {
@@ -90,7 +83,6 @@ export class BookscontainerComponent implements OnInit {
           this.bookContent = response;
           this.currentPage = response[0];
           this.count = 1;
-          this.showHide = !this.showHide;
         },
         (error) => {
           console.log(error)

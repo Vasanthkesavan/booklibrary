@@ -3,7 +3,7 @@
     <div *ngFor="let book of booksData">
       <mat-card class="cb" ng-click="tab = 1" ng-class="{'cb-active': tab == 1}">
         <mat-card-header>
-          <mat-card-title (click)="bookInfo($event.target.innerHTML); changeShowStatus()">
+          <mat-card-title (click)="bookInfo($event.target.innerHTML)">
             {{book[0]}}
           </mat-card-title>
           <mat-card-subtitle>
@@ -15,7 +15,7 @@
   </mat-grid-tile>
 </mat-grid-list>
 
-<mat-grid-list cols="1" rowHeight="200px">
+<mat-grid-list cols="1" rowHeight="200px" *ngIf="count > 0">
   <mat-grid-tile>
     <mat-card>
       <mat-card-content>
@@ -37,7 +37,7 @@
   </mat-grid-tile>
 </mat-grid-list>
 
-<mat-grid-list cols="4" rowHeight="800px" *ngIf="showHide" class="margin-content">
+<mat-grid-list cols="4" rowHeight="800px" *ngIf="count > 0" class="margin-content">
   <mat-grid-tile>
     <button mat-icon-button (click)="prevPage()">
       <mat-icon>
