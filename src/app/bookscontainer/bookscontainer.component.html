@@ -1,24 +1,42 @@
-<div class="wrapper">
-  <div class="one" style="overflow:auto">
-    <mat-card-title class="h"> Book Shelf </mat-card-title>
+<mat-grid-list cols="1" rowHeight="200px" class="margin" *ngIf="!showHideBooks">
+  <mat-grid-tile class="tab1">
     <div *ngFor="let book of booksData">
-        <mat-card class="cb" ng-click="tab = 1" ng-class="{'cb-active': tab == 1}">
-          <mat-card-header>
-            <mat-card-title (click)="bookInfo($event.target.innerHTML)">
-              {{book[0]}}
-            </mat-card-title>
-            <mat-card-subtitle>
-              {{book[1]}}
-            </mat-card-subtitle>
-          </mat-card-header>
-        </mat-card>
+      <mat-card class="cb" ng-click="tab = 1" ng-class="{'cb-active': tab == 1}">
+        <mat-card-header>
+          <mat-card-title (click)="bookInfo($event.target.innerHTML); changeShowStatus()">
+            {{book[0]}}
+          </mat-card-title>
+          <mat-card-subtitle>
+            {{book[1]}}
+          </mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
     </div>
-  </div>
-  <div class="two">
-        <div *ngFor="let line of currentPage">
-          {{line}}
-        </div>
-        <button mat-button color="primary" (click)="prevPage()">Previous</button>
-        <button mat-button color="primary" (click)="nextPage()">Next</button>
-  </div>
-</div>
+  </mat-grid-tile>
+</mat-grid-list>
+<br>
+<mat-grid-list cols="5" rowHeight="800px" *ngIf="showHide">
+  <mat-grid-tile>
+    <button mat-icon-button (click)="prevPage()">
+      <mat-icon>
+        keyboard_arrow_left
+      </mat-icon>
+    </button>
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="3">
+    <div>
+      <p *ngFor="let line of currentPage" class="content">
+        {{line}} <br>
+      </p>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <button mat-icon-button (click)="nextPage()">
+      <mat-icon>
+        keyboard_arrow_right
+      </mat-icon>
+    </button>
+  </mat-grid-tile>
+</mat-grid-list>
+
