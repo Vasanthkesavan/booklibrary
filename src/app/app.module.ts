@@ -17,6 +17,7 @@ import {MatSidenavModule} from '@angular/material';
 import { InfoOneComponent } from './info-one/info-one.component';
 import { InfoTwoComponent } from './info-two/info-two.component';
 import { FooterComponent } from './footer/footer.component';
+import {MatProgressBarModule} from '@angular/material';
 
 const appRoutes: Routes = [
   { path: 'bookscontainer', component: BookscontainerComponent }
@@ -45,7 +46,8 @@ const appRoutes: Routes = [
     MatCardModule,
     RouterModule.forRoot(appRoutes),
     MatSidenavModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressBarModule
   ],
   providers: [ServerService],
   bootstrap: [AppComponent]

@@ -14,11 +14,30 @@
     </div>
   </mat-grid-tile>
 </mat-grid-list>
-<br>
 
+<mat-grid-list cols="1" rowHeight="200px">
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-content>
+        <h2 class="example-h2">Book Progress</h2>
+        <section class="example-section">
+          <mat-progress-bar
+            *ngIf="count > 0"
+            color="primary"
+            mode="determinate"
+            value="{{count}}"
+            bufferValue="{{bookContent.length}}">
+          </mat-progress-bar>
+        </section>
+        <div *ngIf="count > 0">
+          {{count}} / {{bookContent.length}}
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
 
-<mat-grid-list cols="4" rowHeight="800px" *ngIf="showHide">
-
+<mat-grid-list cols="4" rowHeight="800px" *ngIf="showHide" class="margin-content">
   <mat-grid-tile>
     <button mat-icon-button (click)="prevPage()">
       <mat-icon>

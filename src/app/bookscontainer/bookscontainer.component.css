@@ -24,10 +24,30 @@
   margin-top: 20px;
 }
 
+.margin-content {
+  margin-top: 10px;
+}
+
 .DivWithScroll{
   height: 75%;
-  width: 75%;
+  width: 700px;
   overflow:scroll;
   overflow-x:hidden;
   border: 1px solid #DDDDDD;
+}
+
+.example-h2 {
+  margin: 10px;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 30px;
+  width: 700px;
+}
+
+.example-margin {
+  margin: 0 10px;
 }
