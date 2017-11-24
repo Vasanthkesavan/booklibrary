@@ -1,15 +1,37 @@
 .info-two {
-  padding-right: 200px;
-  padding-bottom: 180px;
+  padding-right: 190px;
+  padding-bottom: 120px;
 }
 
 .heading {
   font-size: 34px;
-  font-family: arial;
-  padding-left: 20px;
+  font-family: courier;
+  padding-left: 120px;
+  color: white;
 }
 
 .content {
   font-size: 20px;
   font-family: arial;
+}
+
+
+.grid{
+  display:grid;
+  grid-template-rows: 50px;
+  grid-template-columns: auto auto auto;
+  color: white;
+  padding-left: 50px;
+}
+
+.detail-1, .detail-2, .detail-3 {
+  padding-left: 50px;
+  padding-top: 40px;
+}
+
+.icon-size {
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  font-size: 110px;
 }

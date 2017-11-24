@@ -41,7 +41,7 @@
   margin: 0 auto;
   max-width: 1680px;
   padding: 0 80px;
-  font-family: "arial";
+  font-family: "courier";
 }
 
 .heading {
@@ -113,5 +113,26 @@
 
 .icon-spacing {
   padding-left: 10px;
+}
+
+.grid {
+  display:grid;
+  grid-template-rows: 400px 10px;
+  grid-template-columns: 20px auto auto 20px;
+  padding-top: 10px;
+}
+
+.item-1 {
+  background: lightseagreen;
+  color: white;
+  font-family: courier;
+}
+
+.item-2 {
+  background: mediumslateblue;
+}
+
+.dummy {
+  background: white;
 }
 

@@ -1,12 +1,9 @@
 <mat-toolbar class="header">
   <mat-icon>collections_bookmark</mat-icon>
-
   <div>
     <h1 class="title">{{title}}</h1>
   </div>
-
   <mat-icon class="icon-width">search</mat-icon>
-
   <span class="full-width">
       <mat-form-field>
         <input matInput placeholder="Search for books" value="" [matAutocomplete]="auto">
@@ -18,8 +15,6 @@
       </mat-form-field>
       <button mat-raised-button class="normal-button">Read</button>
   </span>
-
-
 </mat-toolbar>
 
 <div [hidden]="showHide">
@@ -36,21 +31,32 @@
     </div>
   </section>
 
-  <mat-grid-list cols="2" rowHeight="2:1" class="border-grid">
-    <mat-grid-tile class="tile1">
+  <div class="grid" [hidden]="showHide">
+    <div class="dummy">
+
+    </div>
+    <div class="item-1">
       <app-info-one></app-info-one>
-    </mat-grid-tile>
-    <mat-grid-tile class="tile2">
+    </div>
+    <div class="item-2">
       <app-info-two></app-info-two>
-    </mat-grid-tile>
-  </mat-grid-list>
+    </div>
+    <div class="dummy">
 
+    </div>
+  </div>
 
-  <mat-grid-list cols="1" rowHeight="15:1">
+  <mat-grid-list cols="1" rowHeight="15:1" [hidden]="showHide">
     <mat-grid-tile class="tile4">
       <app-footer></app-footer>
     </mat-grid-tile>
   </mat-grid-list>
+
 </div>
 
+
+
 <router-outlet></router-outlet>
+
+
+
