@@ -15,11 +15,11 @@
   </mat-grid-tile>
 </mat-grid-list>
 
-<h2 style="text-align: center" *ngIf="count > 0">
+<h2 style="text-align: center" *ngIf="count > -1">
   Currently Reading: {{bookTitle}}
 </h2>
 
-<mat-grid-list cols="4" rowHeight="800px" *ngIf="count > 0" class="margin-content" (keydown.ArrowLeft)="onLeft($event)" (keydown.ArrowRight)="onRight($event)">
+<mat-grid-list cols="4" rowHeight="800px" *ngIf="count > -1" class="margin-content" (keydown.ArrowLeft)="onLeft($event)" (keydown.ArrowRight)="onRight($event)">
   <mat-grid-tile>
     <button mat-icon-button (click)="prevPage()">
       <mat-icon class="icon-size">
@@ -37,20 +37,20 @@
     </div>
   </mat-grid-tile>
 
-  <mat-grid-list cols="1" rowHeight="80px" *ngIf="count > 0">
+  <mat-grid-list cols="1" rowHeight="80px" *ngIf="count > -1">
     <mat-grid-tile>
       <mat-card>
         <mat-card-content>
-          <section class="example-section">
+          <section class="section">
             <mat-progress-bar
-              *ngIf="count > 0"
+              *ngIf="count > -1"
               color="primary"
               mode="determinate"
               value="{{count}}"
               bufferValue="{{bookContent.length}}">
             </mat-progress-bar>
           </section>
-          <div *ngIf="count > 0">
+          <div *ngIf="count > -1">
             In Page: {{count}} / {{bookContent.length}}
             |
             Progress: {{ (count/bookContent.length*100)| number:0 }}%
@@ -69,4 +69,3 @@
 
   </mat-grid-tile>
 </mat-grid-list>
-
