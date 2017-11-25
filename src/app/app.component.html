@@ -1,21 +1,12 @@
-<mat-toolbar class="header">
-  <mat-icon>collections_bookmark</mat-icon>
-  <div>
-    <h1 class="title">{{title}}</h1>
-  </div>
-  <mat-icon class="icon-width">search</mat-icon>
-  <span class="full-width">
-      <mat-form-field>
-        <input matInput placeholder="Search for books" value="" [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option>
-            Coming Soon...
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-      <button mat-raised-button class="normal-button">Read</button>
-  </span>
-</mat-toolbar>
+<div [hidden]="showHide">
+  <mat-toolbar class="header">
+    <mat-icon>collections_bookmark</mat-icon>
+    <div>
+      <h1 class="title">Book Library</h1>
+    </div>
+  </mat-toolbar>
+</div>
+
 
 <div [hidden]="showHide">
   <section class="landing">

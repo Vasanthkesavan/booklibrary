@@ -16,13 +16,6 @@
   width: 100%;
 }
 
-.full-width {
-  width: 100%;
-  background: transparent;
-  margin-top: 85px;
-  margin-left: 15px;
-  margin-bottom: 70px;
-}
 
 .icon-width {
   margin-left: 240px;
@@ -63,29 +56,12 @@
 .header{
   background: #4285F4;
   color: white;
-  position: relative;
+  padding-left: 80px;
 }
 
 .normal-button{
   background: white;
   color: #4285F4;
-}
-
-.sidenav-container {
-  width: 500px;
-  height: 300px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-}
-
-.sidenav-content {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
-.sidenav {
-  padding: 20px;
 }
 
 .border-grid {

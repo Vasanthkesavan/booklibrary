@@ -7,7 +7,6 @@ import {ServerService} from "../server.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'app';
   public showHide: Boolean;
 
   constructor(private serverService: ServerService) { this.showHide = false; }
@@ -16,8 +15,6 @@ export class AppComponent implements OnInit{
     this.serverService.saveBooks()
       .subscribe(
         (response) => {
-          console.log('this is the title', this.title)
-            this.title = 'Book Library';
         },
         (error) => console.log(error)
       )

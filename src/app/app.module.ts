@@ -23,7 +23,8 @@ import { FooterComponent } from './footer/footer.component';
 import {MatProgressBarModule} from '@angular/material';
 
 const appRoutes: Routes = [
-  { path: 'bookscontainer', component: BookscontainerComponent }
+  { path: 'bookscontainer', component: BookscontainerComponent },
+  { path: '', component: AppComponent }
 ];
 
 @NgModule({
