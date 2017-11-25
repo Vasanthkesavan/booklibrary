@@ -25,8 +25,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/appcontainer', pathMatch: 'full' },
-  { path: 'appcontainer', component: HomePageComponent},
+  { path: '', redirectTo: '/homepage', pathMatch: 'full' },
+  { path: 'homepage', component: HomePageComponent},
   { path: 'bookscontainer', component: BookscontainerComponent }
 ];
 
