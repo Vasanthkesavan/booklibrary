@@ -1,9 +1,16 @@
-<mat-grid-list cols="1" rowHeight="200px" class="margin">
+<h2 style="text-align: center; padding-top: 30px" [hidden]="showHide">
+  Book List
+</h2>
+<h4 style="text-align: center; padding-top: 30px" [hidden]="showHide">
+  Click on title to start reading
+</h4>
+<mat-grid-list cols="1" rowHeight="200px" class="margin" [hidden]="showHide">
   <mat-grid-tile class="tab1">
+
     <div *ngFor="let book of booksData">
       <mat-card class="cb" ng-click="tab = 1" ng-class="{'cb-active': tab == 1}">
         <mat-card-header>
-          <mat-card-title (click)="bookInfo($event.target.innerHTML)">
+          <mat-card-title (click)="bookInfo($event.target.innerHTML); changeShowStatus()">
             {{book[0]}}
           </mat-card-title>
           <mat-card-subtitle>
@@ -15,11 +22,17 @@
   </mat-grid-tile>
 </mat-grid-list>
 
-<h2 style="text-align: center" *ngIf="count > -1">
+<button mat-icon-button (click)="changeShowStatus()" [hidden]="!showHide" style="margin-left: 100px; margin-top: 70px; background: green">
+  <mat-icon style="color: white">replay</mat-icon>
+  <br>
+  Back
+</button>
+
+<h2 style="text-align: center" [hidden]="!showHide" *ngIf="count > -1">
   Currently Reading: {{bookTitle}}
 </h2>
 
-<mat-grid-list cols="4" rowHeight="800px" *ngIf="count > -1" class="margin-content" (keydown.ArrowLeft)="onLeft($event)" (keydown.ArrowRight)="onRight($event)">
+<mat-grid-list cols="4" rowHeight="800px" [hidden]="!showHide" *ngIf="count > -1" class="margin-content" (keydown.ArrowLeft)="onLeft($event)" (keydown.ArrowRight)="onRight($event)">
   <mat-grid-tile>
     <button mat-icon-button (click)="prevPage()">
       <mat-icon class="icon-size">
@@ -42,7 +55,7 @@
       <mat-card>
         <mat-card-content>
           <section class="section">
-            <ngb-progressbar type="info" [value]="count" [max]="bookContent.length">
+            <ngb-progressbar type="success" [value]="count" [max]="bookContent.length">
 
             </ngb-progressbar>
           </section>

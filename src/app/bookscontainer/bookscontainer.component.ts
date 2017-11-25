@@ -13,8 +13,9 @@ export class BookscontainerComponent implements OnInit {
   public count;
   public bookTitle;
   public progressPercentage;
+  public showHide: Boolean;
 
-  constructor(private serverService: ServerService) { }
+  constructor(private serverService: ServerService) { this.showHide = false; }
 
   ngOnInit() {
     this.serverService.getBooks()
@@ -28,6 +29,10 @@ export class BookscontainerComponent implements OnInit {
           console.log(error);
         }
       )
+  }
+
+  changeShowStatus() {
+    this.showHide = !this.showHide;
   }
 
   calculatePercentage() {

@@ -31,7 +31,7 @@
 
 .DivWithScroll{
   height: 75%;
-  width: 700px;
+  width: 800px;
   overflow:scroll;
   overflow-x: visible;
   border: 1px solid #DDDDDD;
