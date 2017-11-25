@@ -110,7 +110,7 @@ export class BookscontainerComponent implements OnInit {
         (response) => {
           this.bookContent = response;
           this.currentPage = response[0];
-          this.count = 1;
+          this.count = 0;
           this.calculatePercentage();
         },
         (error) => {

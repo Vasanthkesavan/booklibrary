@@ -8,12 +8,10 @@ import {
   MatAutocompleteModule, MatGridListModule, MatIconModule, MatInputModule,
   MatToolbarModule
 } from '@angular/material';
-import { SignupComponent } from './signup/signup.component';
 import {MatFormFieldModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material';
 import {MatCardModule} from '@angular/material';
-import { SigninComponent } from './signin/signin.component';
 import { BookscontainerComponent } from './bookscontainer/bookscontainer.component';
 import {Routes, RouterModule} from "@angular/router";
 import {MatSidenavModule} from '@angular/material';
@@ -33,8 +31,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    SignupComponent,
-    SigninComponent,
     BookscontainerComponent,
     InfoOneComponent,
     InfoTwoComponent,
