@@ -21,10 +21,13 @@ import { InfoOneComponent } from './info-one/info-one.component';
 import { InfoTwoComponent } from './info-two/info-two.component';
 import { FooterComponent } from './footer/footer.component';
 import {MatProgressBarModule} from '@angular/material';
+import { HomePageComponent } from './home-page/home-page.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
-  { path: 'bookscontainer', component: BookscontainerComponent },
-  { path: '', component: AppComponent }
+  { path: '', redirectTo: '/appcontainer', pathMatch: 'full' },
+  { path: 'appcontainer', component: HomePageComponent},
+  { path: 'bookscontainer', component: BookscontainerComponent }
 ];
 
 @NgModule({
@@ -36,6 +39,7 @@ const appRoutes: Routes = [
     InfoOneComponent,
     InfoTwoComponent,
     FooterComponent,
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,8 @@ const appRoutes: Routes = [
     MatSidenavModule,
     MatIconModule,
     MatProgressBarModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    NgbModule.forRoot()
   ],
   providers: [ServerService],
   bootstrap: [AppComponent]

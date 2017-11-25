@@ -42,13 +42,9 @@
       <mat-card>
         <mat-card-content>
           <section class="section">
-            <mat-progress-bar
-              *ngIf="count > 0"
-              color="primary"
-              mode="determinate"
-              value="{{count}}"
-              bufferValue="{{bookContent.length}}">
-            </mat-progress-bar>
+            <ngb-progressbar type="info" [value]="count" [max]="bookContent.length">
+
+            </ngb-progressbar>
           </section>
           <div *ngIf="count > -1">
             In Page: {{count}} / {{bookContent.length}}

@@ -1,9 +1,6 @@
-#outer
-{
-  width:100%;
-  text-align: center;
-}
-.inner
-{
-  display: inline-block;
+.grid {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: auto;
+  background: orange;
 }

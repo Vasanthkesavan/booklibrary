@@ -1,0 +1,42 @@
+<div [hidden]="showHide">
+  <mat-toolbar class="header">
+    <mat-icon>collections_bookmark</mat-icon>
+    <div>
+      <h1 class="title">Book Library</h1>
+    </div>
+  </mat-toolbar>
+</div>
+
+<div [hidden]="showHide">
+  <section class="landing">
+    <div class="lander-wrapping">
+      <h1 class="heading">
+        Choose from the existing book catalog, start reading
+      </h1>
+      <h2>
+        We provide books from project gutenberg's which publishes books with
+        open source license.
+      </h2>
+      <button mat-raised-button class="catalog" routerLink="/bookscontainer" (click)="onBrowse()">Browse the catalog</button>
+    </div>
+  </section>
+
+  <div class="grid" [hidden]="showHide">
+    <div class="dummy">
+
+    </div>
+    <div class="item-1">
+      <app-info-one></app-info-one>
+    </div>
+    <div class="item-2">
+      <app-info-two></app-info-two>
+    </div>
+    <div class="dummy">
+
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>
+
+
+<router-outlet></router-outlet>

@@ -7,9 +7,7 @@ import {ServerService} from "../server.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  public showHide: Boolean;
-
-  constructor(private serverService: ServerService) { this.showHide = false; }
+  constructor(private serverService: ServerService) { }
 
   ngOnInit() {
     this.serverService.saveBooks()
@@ -20,7 +18,5 @@ export class AppComponent implements OnInit{
       )
   }
 
-  onBrowse() {
-    this.showHide = !this.showHide;
-  }
+
 }
