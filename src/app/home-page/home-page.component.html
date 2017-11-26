@@ -19,23 +19,17 @@
       <button mat-raised-button class="catalog" routerLink="/bookscontainer" (click)="onBrowse()">Browse the catalog</button>
     </div>
   </section>
-
   <div class="grid" [hidden]="showHide">
-    <div class="dummy">
-
-    </div>
+    <div class="dummy"></div>
     <div class="item-1">
       <app-info-one></app-info-one>
     </div>
     <div class="item-2">
       <app-info-two></app-info-two>
     </div>
-    <div class="dummy">
-
-    </div>
+    <div class="dummy"></div>
   </div>
   <app-footer></app-footer>
 </div>
-
 
 <router-outlet></router-outlet>

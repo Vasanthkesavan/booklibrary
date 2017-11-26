@@ -1,12 +1,14 @@
 <h2 style="text-align: center; padding-top: 30px" [hidden]="showHide">
   Book List
 </h2>
+
 <h4 style="text-align: center; padding-top: 30px" [hidden]="showHide">
   Click on title to start reading
 </h4>
-<mat-grid-list cols="1" rowHeight="200px" class="margin" [hidden]="showHide">
-  <mat-grid-tile class="tab1">
 
+<mat-grid-list cols="1" rowHeight="200px" class="margin" [hidden]="showHide">
+
+  <mat-grid-tile class="tab1">
     <div *ngFor="let book of booksData">
       <mat-card class="cb" ng-click="tab = 1" ng-class="{'cb-active': tab == 1}">
         <mat-card-header>
@@ -20,6 +22,7 @@
       </mat-card>
     </div>
   </mat-grid-tile>
+
 </mat-grid-list>
 
 <button mat-icon-button (click)="changeShowStatus()" [hidden]="!showHide" style="margin-left: 100px; margin-top: 70px; background: green">
@@ -33,17 +36,17 @@
 </h2>
 
 <mat-grid-list cols="4" rowHeight="800px" [hidden]="!showHide" *ngIf="count > -1" class="margin-content" (keydown.ArrowLeft)="onLeft($event)" (keydown.ArrowRight)="onRight($event)">
+
   <mat-grid-tile>
     <button mat-icon-button (click)="prevPage()">
       <mat-icon class="icon-size">
         keyboard_arrow_left
       </mat-icon>
     </button>
-
   </mat-grid-tile>
 
   <mat-grid-tile colspan="2">
-    <div class="DivWithScroll">
+    <div class="divWithScroll">
       <p *ngFor="let line of currentPage" class="content" style="overflow-y:scroll;">
         {{line}} <br>
       </p>
@@ -55,9 +58,7 @@
       <mat-card>
         <mat-card-content>
           <section class="section">
-            <ngb-progressbar type="success" [value]="count" [max]="bookContent.length">
-
-            </ngb-progressbar>
+            <ngb-progressbar type="success" [value]="count" [max]="bookContent.length"></ngb-progressbar>
           </section>
           <div *ngIf="count > -1">
             In Page: {{count}} / {{bookContent.length}}
@@ -75,6 +76,6 @@
         keyboard_arrow_right
       </mat-icon>
     </button>
-
   </mat-grid-tile>
+
 </mat-grid-list>

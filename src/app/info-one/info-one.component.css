@@ -9,12 +9,6 @@
   padding-left: 150px;
 }
 
-.content {
-  font-size: 20px;
-  font-family: arial;
-}
-
-
 .grid{
   display:grid;
   grid-template-rows: 50px;

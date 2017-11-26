@@ -7,16 +7,17 @@ import {ServerService} from "../server.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
+
   constructor(private serverService: ServerService) { }
 
+  /* OnInit lifecycle hook to save the text files in the path to the database */
   ngOnInit() {
     this.serverService.saveBooks()
       .subscribe(
         (response) => {
+          console.log(response);
         },
         (error) => console.log(error)
       )
   }
-
-
 }

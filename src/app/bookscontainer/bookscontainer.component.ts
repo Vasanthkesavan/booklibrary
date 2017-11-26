@@ -70,21 +70,18 @@ export class BookscontainerComponent implements OnInit {
   }
 
   nextPage() {
-
     this.count++;
     this.currentPage = this.bookContent[this.count];
     this.calculatePercentage();
   }
 
   onRight() {
-
     this.count++;
     this.currentPage = this.bookContent[this.count];
     this.calculatePercentage();
   }
 
   prevPage() {
-
     this.count--;
     this.currentPage = this.bookContent[this.count];
     this.calculatePercentage();
@@ -118,4 +115,5 @@ export class BookscontainerComponent implements OnInit {
         }
       )
   }
+  
 }

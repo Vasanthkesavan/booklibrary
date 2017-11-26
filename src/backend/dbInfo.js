@@ -1,3 +1,8 @@
-const dbUri = "vasanth_kesavan:vasanth9876@ds259175.mlab.com:59175/rde-challenge";
 
-module.exports.dbUri = dbUri;
+/*
+* Enter the URL from mLab
+*
+* const dbUri = "user:password@<db_url>"
+* module.exports.dbUri = dbUri;
+*
+* */

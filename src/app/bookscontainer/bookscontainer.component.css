@@ -1,14 +1,5 @@
-.cb {
-  background-color: white;
-  color: black;
-}
-
-.cb:hover{
-  background-color: #4a4a4a;
-  color: #FFF;
-}
-.mdl-card {
-  overflow:auto;
+.margin {
+  margin-top: 20px;
 }
 
 .tab1 {
@@ -16,29 +7,28 @@
   width: 10px;
 }
 
-.content {
-  float: none;
-  text-align: center;
-}
-
-.margin {
-  margin-top: 20px;
+.cb {
+  background-color: white;
+  color: black;
 }
 
 .margin-content {
   margin-top: 10px;
 }
 
-.DivWithScroll{
+.icon-size {
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  font-size: 50px;
+}
+
+.divWithScroll{
   height: 75%;
   width: 800px;
   overflow:scroll;
   overflow-x: visible;
   border: 1px solid #DDDDDD;
-}
-
-.example-h2 {
-  margin: 10px;
 }
 
 .section {
@@ -49,22 +39,11 @@
   width: 700px;
 }
 
-.example-margin {
-  margin: 0 10px;
-}
-
-.icon-size {
-  width: 26px;
-  height: 26px;
-  line-height: 26px;
-  font-size: 50px;
-}
-
-.percentage {
-  padding-left: 140px;
+.content {
+  float: none;
+  text-align: center;
 }
 
 ngb-progressbar {
   width: 100%;
 }
-

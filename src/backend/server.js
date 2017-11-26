@@ -3,19 +3,13 @@ const bodyParser = require('body-parser');
 const Library = require('./db').Library;
 const app = express();
 const fs = require('fs');
-const path = require('path');
 
 app.listen(process.env.PORT || 3000);
 
 /* parse incoming request */
-//app.disable('etag');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-//app.use(express.static(path.resolve(__dirname, '../../dist')));
-// app.get('*', (req, res) => {
-//   res.sendFile(path.resolve(__dirname, '../../dist/index.html'));
-// });
 
 /* List of Routes */
 
@@ -49,13 +43,53 @@ function parseBook(pathStr) {
     if(titleAuthor[0]) {
       if(titleAuthor[1] === undefined) {
         titleAuthor[1] = 'by Homer'
-      }
+      };
       bookDetails.push({title: titleAuthor[0], author: titleAuthor[1], path: pathStr});
-    }
+    };
     saveToDatabase(bookDetails[0]);
   });
-}
+};
 
+function cleanString(input) {
+  var output = "";
+  for (var i=0; i<input.length; i++) {
+    if (input.charCodeAt(i) <= 127) {
+      output += input.charAt(i);
+    };
+  };
+  return output;
+};
+
+function forHomer(str) {
+  for(let j = 0; j < str.length; j++) {
+    if(str[j] === 'Homer') {
+      return true;
+    };
+  };
+  return false;
+};
+
+function aliceCheck(title) {
+  title = title.join('').split(' ');
+
+  for(let i = 0; i < title.length; i++) {
+    if(title[i] === 'Wonderland') {
+      return true;
+    };
+  };
+  return false;
+};
+
+function forAlice(title) {
+  if(aliceCheck(title)) {
+    for(let i = 0; i < title.length; i++) {
+      if(title[i] === '’') {
+        return true;
+      };
+    };
+  };
+  return false;
+};
 
 /* callback functions */
 
@@ -70,10 +104,10 @@ function saveBooks(req, res) {
 
     for(let i = 0; i < pathArray.length; i++) {
       parseBook(pathArray[i]);
-    }
+    };
     res.status(200).send('saved successfully');
   });
-}
+};
 
 function getBooks(req, res) {
   Library.find({}, (err, data) => {
@@ -81,50 +115,9 @@ function getBooks(req, res) {
       console.log(err);
     } else {
       res.send(data);
-    }
-  })
-}
-
-function cleanString(input) {
-  var output = "";
-  for (var i=0; i<input.length; i++) {
-    if (input.charCodeAt(i) <= 127) {
-      output += input.charAt(i);
-    }
-  }
-  return output;
-}
-
-function forHomer(str) {
-  for(let j = 0; j < str.length; j++) {
-    if(str[j] === 'Homer') {
-      return true;
-    }
-  }
-  return false;
-}
-
-function aliceCheck(title) {
-  title = title.join('').split(' ');
-
-  for(let i = 0; i < title.length; i++) {
-    if(title[i] === 'Wonderland') {
-      return true;
-    }
-  }
-  return false;
-}
-function forAlice(title) {
-  if(aliceCheck(title)) {
-    for(let i = 0; i < title.length; i++) {
-      if(title[i] === '’') {
-        return true;
-      }
-    }
-  }
-  return false;
+    };
+  });
 };
-
 
 function getBookContents(req, res) {
   let bookTitle1 = cleanString(req.body[0].replace("\r", "").replace("\n", "").split(' ').join(' ').split(' ').join('')).trim();
@@ -166,7 +159,6 @@ function getBookContents(req, res) {
           path.push(data[i]['path']);
         }
       }
-      //res.send(JSON.stringify(path[0]))
 
       let bookArr = fs.readFileSync(path[0]).toString().split('\n');
       let split = [];
@@ -176,6 +168,6 @@ function getBookContents(req, res) {
       }
 
       res.send(JSON.stringify(split))
-    }
-  })
-}
+    };
+  });
+};

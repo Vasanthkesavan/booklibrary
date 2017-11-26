@@ -9,17 +9,17 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import {MatFormFieldModule} from '@angular/material';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material';
 import {MatCardModule} from '@angular/material';
-import { BookscontainerComponent } from './bookscontainer/bookscontainer.component';
+import {BookscontainerComponent} from './bookscontainer/bookscontainer.component';
 import {Routes, RouterModule} from "@angular/router";
 import {MatSidenavModule} from '@angular/material';
-import { InfoOneComponent } from './info-one/info-one.component';
-import { InfoTwoComponent } from './info-two/info-two.component';
-import { FooterComponent } from './footer/footer.component';
+import {InfoOneComponent} from './info-one/info-one.component';
+import {InfoTwoComponent} from './info-two/info-two.component';
+import {FooterComponent} from './footer/footer.component';
 import {MatProgressBarModule} from '@angular/material';
-import { HomePageComponent } from './home-page/home-page.component';
+import {HomePageComponent} from './home-page/home-page.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [

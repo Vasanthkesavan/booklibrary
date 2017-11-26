@@ -16,6 +16,4 @@ export class ServerService {
   getBookContents(titles: Array<String>) {
     return this.http.post('/api/getBookContents', titles);
   }
-
-
 }
