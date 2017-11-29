@@ -13,3 +13,9 @@ Run `npm run dev` for a dev server. Navigate to `http://localhost:4200/`. The ap
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+
+### Upcoming Feature
+
+Convert book text into human like speech.
+Authenticate and save progression by user.
+Upload new books and expand the library based on category.
